@@ -15,6 +15,9 @@ def distance(city1, city2):
     5.0
     """
     "*** YOUR CODE HERE ***"
+    lat_diff = get_lat(city1) - get_lat(city2)
+    lon_diff = get_lon(city1) - get_lon(city2)
+    return sqrt(lat_diff ** 2 + lon_diff ** 2)
 
 def closer_city(lat, lon, city1, city2):
     """
@@ -31,6 +34,10 @@ def closer_city(lat, lon, city1, city2):
     'Bucharest'
     """
     "*** YOUR CODE HERE ***"
+    dummy_city = make_city('dummy', lat, lon)
+    dist1 = distance(dummy_city, city1)
+    dist2 = distance(dummy_city, city2)
+    return get_name(city1) if dist1 <= dist2 else get_name(city2)
 
 def check_abstraction():
     """
@@ -130,6 +137,12 @@ def acorn_finder(t):
     True
     """
     "*** YOUR CODE HERE ***"
+    assert is_tree(t), 'must be called on a tree object'
+    
+    if label(t) == 'acorn':
+        return True
+    else:
+        return True in [acorn_finder(i) for i in branches(t)]
 
 def sprout_leaves(t, vals):
     """Sprout new leaves containing the data in vals at each leaf in
@@ -165,6 +178,12 @@ def sprout_leaves(t, vals):
           2
     """
     "*** YOUR CODE HERE ***"
+    assert is_tree(t), 'must be called on a tree object'
+
+    if is_leaf(t):
+        return tree(label(t), [tree(i) for i in vals])
+    else:
+        return tree(label(t), [sprout_leaves(i, vals) for i in branches(t)])
 
 def add_chars(w1, w2):
     """
