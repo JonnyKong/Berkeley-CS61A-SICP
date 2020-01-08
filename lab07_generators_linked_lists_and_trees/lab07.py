@@ -1,4 +1,5 @@
 """ Lab 07: Generators, Linked Lists, and Trees """
+import sys
 
 # Generators
 def naturals():
@@ -30,6 +31,7 @@ def scale(s, k):
     [2, 4, 6, 8, 10]
     """
     "*** YOUR CODE HERE ***"
+    yield from map(lambda x: x * k, s)
 
 
 # Linked Lists
@@ -44,6 +46,12 @@ def link_to_list(link):
     []
     """
     "*** YOUR CODE HERE ***"
+    ret = []
+    node = link
+    while node != None and node != Link.empty:
+        ret.append(node.first)
+        node = node.rest
+    return ret 
 
 # Trees
 
@@ -57,6 +65,17 @@ def cumulative_sum(t):
     Tree(16, [Tree(8, [Tree(5)]), Tree(7)])
     """
     "*** YOUR CODE HERE ***"
+    def cumulative_sum_helper(t):
+        if t.is_leaf():
+            return t.label
+        else:
+            sum_val = 0
+            for branch in t.branches:
+                sum_val += cumulative_sum_helper(branch)
+            t.label += sum_val
+            return t.label
+    
+    cumulative_sum_helper(t)
 
 def is_bst(t):
     """Returns True if the Tree t has the structure of a valid BST.
@@ -84,6 +103,21 @@ def is_bst(t):
     False
     """
     "*** YOUR CODE HERE ***"
+    def is_bst_helper(t, min_label, max_label):
+        if isinstance(t, Tree) == False:
+            return False
+        elif t.label < min_label or t.label > max_label:
+            return False
+        elif len(t.branches) == 0:
+            return True
+        elif len(t.branches) == 1:
+            return is_bst_helper(t.branches[0], min_label, max_label)
+        elif len(t.branches) == 2:
+            return is_bst_helper(t.branches[0], min_label, t.label) and is_bst_helper(t.branches[1], t.label + 1, max_label)
+        else:
+            return False
+
+    return is_bst_helper(t, -1 * sys.maxsize, sys.maxsize)
 
 # Link List Class
 class Link:
