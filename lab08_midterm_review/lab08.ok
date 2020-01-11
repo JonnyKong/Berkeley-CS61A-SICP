@@ -1,0 +1,38 @@
+{
+    "name": "Lab 8",
+    "endpoint": "cal/cs61a/fa19/lab08",
+    "src": [
+        "lab08.py",
+        "lab08_extra.py"
+    ],
+    "tests": {
+        "tests/growth.py": "ok_test",
+        "tests/Keyboard.py": "ok_test",
+        "tests/deep_len.py": "ok_test",
+        "tests/inc_subseqs.py": "ok_test",
+        "tests/insert.py": "ok_test",
+        "tests/insert_into_all.py": "ok_test",
+        "tests/make_advanced_counter_maker.py": "ok_test",
+        "tests/make_to_string.py": "ok_test",
+        "tests/num_trees.py": "ok_test",
+        "tests/permutations.py": "ok_test",
+        "tests/prune_small.py": "ok_test",
+        "tests/shuffle.py": "ok_test",
+        "tests/subseqs.py": "ok_test",
+        "tests/trade.py": "ok_test"
+    },
+    "default_tests": [
+        "insert",
+        "growth",
+        "subseqs",
+        "inc_subseqs"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
