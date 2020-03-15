@@ -1,0 +1,30 @@
+{
+    "name": "Lab 14",
+    "endpoint": "cal/cs61a/fa19/lab14",
+    "src": [
+        "lab14.py",
+        "lab14_extra.py",
+        "lab14.scm"
+    ],
+    "tests": {
+        "lab14.py:prune_min": "doctest",
+        "tests/compose-all.py": "ok_test",
+        "lab14_extra.py:num_splits": "doctest",
+        "lab14_extra.py:insert": "doctest",
+        "tests/has-cycle.py": "ok_test",
+        "tests/switch.py": "ok_test"
+    },
+    "default_tests": [
+        "prune_min",
+        "compose-all",
+        "has-cycle"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
