@@ -1,2 +1,5 @@
+; from: https://www.nyx.net/~gthompso/quine.htm
+
 (define quine
-    'your-code-here)
+  ((lambda (x) (list x (list (quote quote) x)))
+      (quote (lambda (x) (list x (list (quote quote) x))))))
